@@ -6,7 +6,7 @@ export default function AppFooter({ isBright }) {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center">
                     <p className={`${isBright ? 'text-horizon-textSecondary' : 'text-midnight-textSecondary'}`}>
-                        © 2025 Enardo Stefanus. Built with <span className="text-red-500">❤️</span> and <span className={`${isBright ? 'text-horizon-accent' : 'text-midnight-accent'}`}>React</span>
+                        © 2025 Enardo Stefanus.
                     </p>
                 </div>
             </div>

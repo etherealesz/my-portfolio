@@ -48,12 +48,12 @@ export default function HomeHero({ isBright, scrollProgress, heroRef, onNavigate
                         </div>
 
                         <div className="text-center md:text-left space-y-6 order-1 md:order-2">
-                            <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold ${isBright ? 'text-horizon-text' : 'text-midnight-text'} mb-6 animate-fade-in`}>
-                                <span className={`bg-gradient-to-r ${isBright ? 'from-horizon-accent via-horizon-accent to-horizon-accentHover' : 'from-midnight-accent via-midnight-accent to-midnight-accentHover'} bg-clip-text text-transparent`}>
+                            <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold ${isBright ? 'text-horizon-accent' : 'text-midnight-text'} mb-6 animate-fade-in`}>
+                                <span className={`bg-gradient-to-r ${isBright ? 'from-horizon-accent via-horizon-accent to-horizon-accent' : 'from-midnight-accentHover via-midnight-accentHover to-midnight-accentHover'} bg-clip-text text-transparent`}>
                                     Enardo Stefanus
                                 </span>
                             </h1>
-                            <p className={`text-2xl sm:text-3xl lg:text-4xl ${isBright ? 'text-horizon-textSecondary' : 'text-midnight-textSecondary'} mb-8 font-semibold`}>
+                            <p className={`text-2xl sm:text-3xl lg:text-4xl ${isBright ? 'text-horizon-text' : 'text-midnight-text'} mb-8 font-semibold`}>
                                 Full-Stack Developer
                             </p>
                             <p className={`text-lg sm:text-xl ${isBright ? 'text-horizon-textSecondary' : 'text-midnight-textSecondary'} mb-12 leading-relaxed`}>
@@ -75,12 +75,6 @@ export default function HomeHero({ isBright, scrollProgress, heroRef, onNavigate
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
-                    <svg className="w-6 h-6 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                        <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                    </svg>
                 </div>
             </section>
         </div>
