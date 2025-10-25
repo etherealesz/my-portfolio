@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import NavBar from './components/NavBar';
 import HomeHero from './components/HomeHero';
 import AboutSection from './components/AboutSection';
+import SkillsSection from './components/SkillsSection';
 import ProjectsGrid from './components/ProjectsGrid';
 import ContactSection from './components/ContactSection';
-import AppFooter from './components/AppFooter';
 import { projects } from './data/projects';
-import { skills } from './data/skills';
+import { skillsData } from './data/skills';
 
 function App() {
     const [currentPage, setCurrentPage] = useState('home');
@@ -75,7 +75,12 @@ function App() {
 
             {/* About Page */}
             {currentPage === 'about' && (
-                <AboutSection isBright={isBright} skills={skills} />
+                <AboutSection isBright={isBright}/>
+            )}
+
+            {/* Skills Page */}
+            {currentPage === 'skills' && (
+                <SkillsSection isBright={isBright} skillsData={skillsData}></SkillsSection>
             )}
 
             {/* Projects Page */}
@@ -92,11 +97,6 @@ function App() {
                     onSubmit={handleFormSubmit}
                 />
             )}
-
-            {/* Footer */}
-            <AppFooter isBright={isBright} />
-
-
         </div>
     );
 }

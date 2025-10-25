@@ -7,13 +7,13 @@ export default function NavBar({ isBright, currentPage, onNavigate, onToggleThem
                 <div className="flex justify-between items-center h-16">
                     <div className="flex-shrink-0 cursor-pointer" onClick={() => onNavigate('home')}>
                         <span className={`text-2xl font-bold bg-gradient-to-r ${isBright ? 'from-horizon-accent to-horizon-accentHover' : 'from-midnight-accent to-midnight-accentHover'} bg-clip-text text-transparent`}>
-                            ES
+                            ENARDO S
                         </span>
                     </div>
 
                     <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-4">
-                            {['home', 'about', 'projects', 'contact'].map((item) => (
+                            {['home', 'about', 'skills', 'projects', 'contact'].map((item) => (
                                 <button
                                     key={item}
                                     onClick={() => onNavigate(item)}
@@ -27,7 +27,7 @@ export default function NavBar({ isBright, currentPage, onNavigate, onToggleThem
                             ))}
                             <button
                                 onClick={onToggleTheme}
-                                className={`w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 ${isBright ? 'bg-horizon-text text-horizon-bg hover:bg-horizon-textSecondary bg-horizon-card' : 'bg-midnight-text/10 text-midnight-text hover:bg-midnight-text/20 bg-horizon-text'} border ${isBright ? 'border-horizon-card/40' : 'border-midnight-text/20'}`}
+                                className={`w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 ${isBright ? 'bg-horizon-card text-horizon-bg hover:bg-horizon-textSecondary bg-horizon-card' : 'bg-midnight-text/10 text-midnight-text hover:bg-midnight-text/20 bg-horizon-text'} border ${isBright ? 'border-horizon-card/40' : 'border-midnight-text/20'}`}
                                 aria-label="Toggle theme"
                                 title={isBright ? 'Switch to Dark' : 'Switch to Bright'}
                             >

@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function ContactSection({ isBright, formData, onInputChange, onSubmit }) {
     return (
         <section className={`min-h-screen py-24 px-4 sm:px-6 lg:px-8 ${isBright ? 'bg-gradient-to-b from-horizon-bg via-horizon-card to-horizon-bg' : 'bg-gradient-to-b from-midnight-bg to-midnight-card/30'}`}>
@@ -8,7 +6,10 @@ export default function ContactSection({ isBright, formData, onInputChange, onSu
                     <h2 className={`text-4xl sm:text-5xl font-bold ${isBright ? 'text-horizon-text' : 'text-midnight-text'} mb-4`}>
                         Get In <span className={`bg-gradient-to-r ${isBright ? 'from-horizon-accent to-horizon-accentHover' : 'from-midnight-accent to-midnight-accentHover'} bg-clip-text text-transparent`}>Touch</span>
                     </h2>
-                    <div className={`w-32 h-1.5 bg-gradient-to-r ${isBright ? 'from-horizon-accent to-horizon-accentHover' : 'from-midnight-accent to-midnight-accentHover'} mx-auto rounded-full`}></div>
+                    <div className={`w-32 h-1.5 bg-gradient-to-r ${isBright ? 'from-horizon-accent to-horizon-accentHover' : 'from-midnight-accent to-midnight-accentHover'} mx-auto rounded-full mt-6`}></div>
+                    <p className={`mt-4 max-w-2xl mx-auto text-lg ${isBright ? 'text-horizon-text' : 'text-midnight-text'}`}>
+                        Have a project in mind or just want to say hello? I'd love to hear from you.
+                    </p>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-12">
@@ -25,7 +26,7 @@ export default function ContactSection({ isBright, formData, onInputChange, onSu
                         <div className="space-y-6">
                             <div className="flex items-center space-x-4 group">
                                 <div className={`w-14 h-14 bg-gradient-to-br ${isBright ? 'from-horizon-accent to-horizon-accentHover' : 'from-midnight-accent to-midnight-accentHover'} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                                    <span className="text-2xl">📧</span>
+                                    <i className="fas fa-envelope text-2xl text-white"></i>
                                 </div>
                                 <div>
                                     <p className={`${isBright ? 'text-horizon-text' : 'text-midnight-text'} font-semibold text-lg`}>Email</p>
@@ -35,7 +36,7 @@ export default function ContactSection({ isBright, formData, onInputChange, onSu
 
                             <div className="flex items-center space-x-4 group">
                                 <div className={`w-14 h-14 bg-gradient-to-br ${isBright ? 'from-horizon-accent to-horizon-accentHover' : 'from-midnight-accent to-midnight-accentHover'} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                                    <span className="text-2xl">📱</span>
+                                    <i className="fas fa-phone-alt text-2xl text-white"></i>
                                 </div>
                                 <div>
                                     <p className={`${isBright ? 'text-horizon-text' : 'text-midnight-text'} font-semibold text-lg`}>Phone</p>
@@ -45,24 +46,12 @@ export default function ContactSection({ isBright, formData, onInputChange, onSu
 
                             <div className="flex items-center space-x-4 group">
                                 <div className={`w-14 h-14 bg-gradient-to-br ${isBright ? 'from-horizon-accent to-horizon-accentHover' : 'from-midnight-accent to-midnight-accentHover'} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                                    <span className="text-2xl">📍</span>
+                                    <i className="fas fa-map-marker-alt text-2xl text-white"></i>
                                 </div>
                                 <div>
                                     <p className={`${isBright ? 'text-horizon-text' : 'text-midnight-text'} font-semibold text-lg`}>Location</p>
                                     <p className={`${isBright ? 'text-horizon-textSecondary' : 'text-midnight-textSecondary'}`}>Jakarta Barat, Indonesia</p>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div className="mt-10">
-                            <h4 className={`text-xl font-semibold ${isBright ? 'text-horizon-text' : 'text-midnight-text'} mb-6`}>Follow Me</h4>
-                            <div className="flex space-x-4">
-                                <a href="https://www.linkedin.com/in/enardo-dev/" className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg ${isBright ? 'bg-gradient-to-br from-horizon-bg to-horizon-card hover:from-horizon-accent hover:to-horizon-accentHover' : 'bg-gradient-to-br from-midnight-bg to-midnight-card hover:from-midnight-accent hover:to-midnight-accentHover'}`}>
-                                    <span className="text-xl">💼</span>
-                                </a>
-                                <a href="https://github.com/etherealesz" className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg ${isBright ? 'bg-gradient-to-br from-horizon-bg to-horizon-card hover:from-horizon-accent hover:to-horizon-accentHover' : 'bg-gradient-to-br from-midnight-bg to-midnight-card hover:from-midnight-accent hover:to-midnight-accentHover'}`}>
-                                    <span className="text-xl">🐙</span>
-                                </a>
                             </div>
                         </div>
                     </div>
@@ -130,5 +119,3 @@ export default function ContactSection({ isBright, formData, onInputChange, onSu
         </section>
     );
 }
-
-

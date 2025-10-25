@@ -1,6 +1,8 @@
 import React, { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Stars } from '@react-three/drei';
+import { Stars, OrbitControls } from '@react-three/drei';
+
+// ============ BRIGHT MODE ANIMATIONS ============
 
 // Bright mode: Floating geometric crystals
 function FloatingCrystals({ scrollProgress }) {
@@ -29,7 +31,7 @@ function FloatingCrystals({ scrollProgress }) {
             child.position.x = crystal.x + Math.cos(state.clock.elapsedTime * 0.3 + i) * 0.3;
         });
         
-        groupRef.current.rotation.y = state.clock.elapsedTime * 0.1 + scrollProgress * Math.PI;
+        groupRef.current.rotation.y += scrollProgress * 0.001;
     });
 
     return (
@@ -65,7 +67,7 @@ function OrbitRings({ scrollProgress }) {
         
         groupRef.current.children.forEach((ring, i) => {
             const ringData = rings[i];
-            ring.rotation.y = state.clock.elapsedTime * ringData.speed + scrollProgress * Math.PI * (i + 1);
+            ring.rotation.y = state.clock.elapsedTime * ringData.speed + scrollProgress * 0.005 * (i + 1);
         });
     });
 
@@ -87,50 +89,43 @@ function OrbitRings({ scrollProgress }) {
     );
 }
 
-// Dark mode: Glowing sphere with distortion effect
-function GlowingSphere({ scrollProgress }) {
+function TorusKnot({ scrollProgress }) {
     const meshRef = useRef();
     const glowRef = useRef();
 
     useFrame((state) => {
         if (meshRef.current) {
-            meshRef.current.rotation.x = state.clock.elapsedTime * 0.1 + scrollProgress * Math.PI * 0.5;
-            meshRef.current.rotation.y = state.clock.elapsedTime * 0.15 + scrollProgress * Math.PI;
-            
-            const scale = 2.5 + Math.sin(state.clock.elapsedTime * 0.5) * 0.2;
-            meshRef.current.scale.setScalar(scale);
+            meshRef.current.rotation.x = state.clock.elapsedTime * 0.2 + scrollProgress * 0.01;
+            meshRef.current.rotation.y = state.clock.elapsedTime * 0.3 + scrollProgress * 0.01;
         }
         
         if (glowRef.current) {
-            glowRef.current.rotation.x = -state.clock.elapsedTime * 0.08;
-            glowRef.current.rotation.y = state.clock.elapsedTime * 0.12;
-            const glowScale = 3.2 + Math.sin(state.clock.elapsedTime * 0.7) * 0.3;
-            glowRef.current.scale.setScalar(glowScale);
+            glowRef.current.rotation.x = -state.clock.elapsedTime * 0.15;
+            glowRef.current.rotation.y = state.clock.elapsedTime * 0.25;
         }
     });
 
     return (
         <>
             <mesh ref={glowRef}>
-                <sphereGeometry args={[1, 32, 32]} />
-                <meshBasicMaterial color="#8b5cf6" transparent opacity={0.15} />
+                <torusKnotGeometry args={[2.5, 0.8, 128, 16]} />
+                <meshBasicMaterial color="#8b5cf6" transparent opacity={0.1} />
             </mesh>
             <mesh ref={meshRef}>
-                <icosahedronGeometry args={[1, 4]} />
+                <torusKnotGeometry args={[2, 0.6, 128, 16]} />
                 <meshStandardMaterial 
                     color="#6366f1"
                     metalness={0.9}
                     roughness={0.1}
-                    emissive="#6366f1"
+                    emissive="#8b5cf6"
                     emissiveIntensity={0.5}
-                    wireframe={false}
                 />
             </mesh>
         </>
     );
 }
 
-// Dark mode: Particle field
+// Particle field background for dark mode
 function ParticleField({ scrollProgress }) {
     const pointsRef = useRef();
     
@@ -154,7 +149,7 @@ function ParticleField({ scrollProgress }) {
 
     useFrame((state) => {
         if (!pointsRef.current) return;
-        pointsRef.current.rotation.y = state.clock.elapsedTime * 0.05 + scrollProgress * Math.PI * 0.3;
+        pointsRef.current.rotation.y += scrollProgress * 0.0005;
         pointsRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.1) * 0.1;
     });
 
@@ -179,59 +174,39 @@ function ParticleField({ scrollProgress }) {
     );
 }
 
-// Dark mode: Rotating energy rings
-function EnergyRings({ scrollProgress }) {
-    const groupRef = useRef();
 
-    useFrame((state) => {
-        if (!groupRef.current) return;
-        
-        groupRef.current.children.forEach((child, i) => {
-            child.rotation.z = state.clock.elapsedTime * (0.5 + i * 0.2) + scrollProgress * Math.PI;
-            child.rotation.x = Math.sin(state.clock.elapsedTime * 0.3 + i) * 0.2;
-        });
-    });
-
-    const rings = [
-        { radius: 3, color: '#8b5cf6', opacity: 0.4 },
-        { radius: 3.5, color: '#6366f1', opacity: 0.3 },
-        { radius: 4, color: '#4f46e5', opacity: 0.2 }
-    ];
-
+export function BrightScene({ scrollProgress }) {
     return (
-        <group ref={groupRef}>
-            {rings.map((ring, i) => (
-                <mesh key={i} rotation={[Math.PI / 2, 0, 0]}>
-                    <torusGeometry args={[ring.radius, 0.04, 16, 100]} />
-                    <meshBasicMaterial color={ring.color} transparent opacity={ring.opacity} />
-                </mesh>
-            ))}
-        </group>
+        <>
+            <OrbitControls enableZoom={false} enablePan={false} />
+            <ambientLight intensity={1.2} />
+            <directionalLight position={[5, 5, 5]} intensity={1} />
+            <directionalLight position={[-5, -5, -5]} intensity={0.4} color="#38bdf8" />
+            <FloatingCrystals scrollProgress={scrollProgress} />
+            <OrbitRings scrollProgress={scrollProgress} />
+        </>
+    );
+}
+
+export function DarkScene({ scrollProgress }) {
+    return (
+        <>
+            <OrbitControls enableZoom={false} enablePan={false} />
+            <ambientLight intensity={0.4} />
+            <pointLight position={[10, 10, 10]} intensity={1.5} color="#8b5cf6" />
+            <pointLight position={[-10, -10, -10]} intensity={1} color="#6366f1" />
+            <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
+            
+            <TorusKnot scrollProgress={scrollProgress} />
+            
+            <ParticleField scrollProgress={scrollProgress} />
+        </>
     );
 }
 
 export default function HeroScene({ scrollProgress, isBright }) {
     if (isBright) {
-        return (
-            <>
-                <ambientLight intensity={1.2} />
-                <directionalLight position={[5, 5, 5]} intensity={1} />
-                <directionalLight position={[-5, -5, -5]} intensity={0.4} color="#38bdf8" />
-                <FloatingCrystals scrollProgress={scrollProgress} />
-                <OrbitRings scrollProgress={scrollProgress} />
-            </>
-        );
+        return <BrightScene scrollProgress={scrollProgress} />;
     }
-
-    return (
-        <>
-            <ambientLight intensity={0.4} />
-            <pointLight position={[10, 10, 10]} intensity={1.5} color="#8b5cf6" />
-            <pointLight position={[-10, -10, -10]} intensity={1} color="#6366f1" />
-            <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
-            <GlowingSphere scrollProgress={scrollProgress} />
-            <ParticleField scrollProgress={scrollProgress} />
-            <EnergyRings scrollProgress={scrollProgress} />
-        </>
-    );
+    return <DarkScene scrollProgress={scrollProgress} />;
 }

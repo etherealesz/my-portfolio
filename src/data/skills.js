@@ -1,16 +1,49 @@
-export const skills = [
-    { name: '.NET', icon: '🔷', color: 'from-purple-500 to-purple-700' },
-    { name: 'Flutter', icon: '📱', color: 'from-blue-500 to-cyan-500' },
-    { name: 'Python', icon: '🐍', color: 'from-yellow-500 to-green-500' },
-    { name: 'React', icon: '⚛️', color: 'from-cyan-400 to-blue-500' },
-    { name: 'JavaScript', icon: '🟨', color: 'from-yellow-400 to-orange-500' },
-    { name: 'MATLAB', icon: '🧮', color: 'from-orange-500 to-red-500' },
-    { name: 'Unity', icon: '🎮', color: 'from-gray-700 to-gray-900' },
-    { name: 'Git', icon: '📋', color: 'from-red-500 to-orange-600' },
-    { name: 'RESTful API', icon: '🔗', color: 'from-green-500 to-emerald-600' },
-    { name: 'UI/UX', icon: '🎨', color: 'from-pink-500 to-rose-600' },
-    { name: 'Next.js', icon: '▲', color: 'from-gray-800 to-black' },
-    { name: 'Firebase', icon: '🔥', color: 'from-yellow-500 to-orange-600' }
-];
-
-
+export const skillsData = {
+    programmingLanguages: [
+        { name: 'Python', icon: 'fab fa-python' },
+        { name: 'JavaScript', icon: 'fab fa-js-square' },
+        { name: 'C#', icon: 'fab fa-microsoft' },         
+        { name: 'Dart', icon: 'fab fa-dev' }, 
+        { name: 'Java', icon: 'fab fa-java' },
+        { name: 'C++', icon: 'fas fa-file-code' },
+        { name: 'Go', icon: 'fab fa-golang' },
+        { name: 'PHP', icon: 'fab fa-php' },
+        { name: 'Ruby', icon: 'fas fa-gem' },
+        { name: 'SQL', icon: 'fas fa-database' },
+        { name: 'MATLAB', icon: 'fas fa-square-root-variable' } 
+    ],
+    frameworks: [
+        { name: '.NET', icon: 'fab fa-windows' },
+        { name: 'ASP.NET Core', icon: 'fab fa-windows' },
+        { name: 'Blazor', icon: 'fas fa-bolt' }, 
+        { name: 'MudBlazor', icon: 'fas fa-palette' }, 
+        { name: 'Flutter', icon: 'fab fa-flutter' },
+        { name: 'React.js', icon: 'fab fa-react' },
+        { name: 'Next.js', icon: 'fab fa-react' }, 
+        { name: 'Node.js', icon: 'fab fa-node-js' },
+        { name: 'Laravel', icon: 'fab fa-laravel' },
+        { name: 'On Rails', icon: 'fas fa-train-subway' }, 
+        { name: 'Unity', icon: 'fab fa-unity' },
+        { name: 'Razor Pages', icon: 'fas fa-file-invoice' }
+    ],
+    tools: [
+        { name: 'Git', icon: 'fab fa-git-alt' },
+        { name: 'GitHub', icon: 'fab fa-github' },
+        { name: 'Figma', icon: 'fab fa-figma' },
+        { name: 'VS Code', icon: 'fas fa-code' },
+        { name: 'Jira', icon: 'fab fa-jira' },
+        { name: 'Notion', icon: 'fab fa-notion' },
+        { name: 'Lark', icon: 'fas fa-feather-alt' }, 
+        { name: 'PM2', icon: 'fas fa-cog' }, 
+        { name: 'Photoshop', icon: 'fas fa-image' },
+        { name: 'Premiere Pro', icon: 'fas fa-film' },
+        { name: 'Canva', icon: 'fas fa-pen-fancy' }
+    ],
+    other: [
+        { name: 'RESTful API', icon: 'fas fa-link' },
+        { name: 'Firebase', icon: 'fas fa-fire' },
+        { name: 'MS Office', icon: 'fas fa-file-word' },
+        { name: 'Team Leadership', icon: 'fas fa-users' },
+        { name: 'Problem Solving', icon: 'fas fa-puzzle-piece' }
+    ]
+};
